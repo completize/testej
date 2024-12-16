@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.20"
+    id("maven-publish")
 }
 
 group = "com.teste.j"
@@ -18,4 +19,21 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(21)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("mavenJava") {
+                pom {
+                    name = "My Library"
+                    artifactId = "testej"
+                    groupId = group.toString()
+                    version = version.toString()
+                    description = "A concise description of my library"
+                    url = "http://www.example.com/library"
+                }
+            }
+        }
+    }
 }
