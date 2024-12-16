@@ -24,15 +24,8 @@ kotlin {
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("mavenJava") {
-                pom {
-                    name = "My Library"
-                    artifactId = "testej"
-                    groupId = group.toString()
-                    version = version.toString()
-                    description = "A concise description of my library"
-                    url = "http://www.example.com/library"
-                }
+            create<MavenPublication>("maven") {
+                from(components["java"])
             }
         }
     }
