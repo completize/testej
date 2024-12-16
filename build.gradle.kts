@@ -24,9 +24,6 @@ kotlin {
     jvmToolchain(21)
 }
 
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
+publishing.publications.register<MavenPublication>("maven") {
+    from(components["kotlin"])
 }
