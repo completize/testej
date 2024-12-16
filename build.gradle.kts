@@ -24,6 +24,6 @@ kotlin {
     jvmToolchain(21)
 }
 
-publishing.publications.register<MavenPublication>("maven") {
-    from(components["kotlin"])
+publishing.publications.register<MavenPublication>("mavenJava") {
+    from(components["java"])
 }
