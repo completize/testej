@@ -3,8 +3,11 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.teste.j"
-version = "1.0-SNAPSHOT"
+var projectName = "com.teste.j"
+var projectVersion = "1.0-SNAPSHOT"
+
+group = projectName
+version = projectVersion
 
 repositories {
     mavenCentral()
@@ -21,10 +24,9 @@ kotlin {
     jvmToolchain(21)
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("Maven") {
-            from(components["java"])
-        }
+
+buildscript {
+    repositories {
+        mavenCentral()
     }
 }
