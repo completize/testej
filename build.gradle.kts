@@ -21,12 +21,10 @@ kotlin {
     jvmToolchain(21)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components["java"])
-            }
+publishing {
+    publications {
+        create<MavenPublication>("Maven") {
+            from(components["java"])
         }
     }
 }
