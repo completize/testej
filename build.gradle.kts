@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.20"
-    id("maven-publish")
+    id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
 var projectName = "com.teste.j"
@@ -24,22 +24,10 @@ kotlin {
     jvmToolchain(21)
 }
 
-val sourcesJar by tasks.registering(Jar::class) {
-    //classifier = "sources"
-    from(sourceSets.main.get().allSource)
-}
-
-publishing {
-    repositories {
-        maven {
-            // change to point to your repo, e.g. http://my.org/repo
-            url = uri("$buildDir/repo")
-        }
-    }
-    publications {
-        register("mavenJava", MavenPublication::class) {
-            from(components["java"])
-            artifact(sourcesJar.get())
-        }
-    }
+mavenPublishing {
+    coordinates(
+        groupId = projectName,
+        artifactId = "testej",
+        version = projectVersion
+    )
 }
